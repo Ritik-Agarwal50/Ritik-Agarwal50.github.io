@@ -1,0 +1,96 @@
+---
+layout: default
+---
+<article class="post-article container">
+  <!-- Back Link -->
+  <div class="post-nav-back">
+    <a href="{{ '/blog/' | relative_url }}" class="back-link">
+      <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+      </svg>
+      <span>Back to all posts</span>
+    </a>
+  </div>
+
+  <!-- Post Header -->
+  <header class="post-header">
+    <div class="post-meta-top">
+      <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%B %d, %Y" }}
+      </time>
+      <span class="meta-sep">·</span>
+      <span class="reading-time">
+        {% assign words = content | number_of_words %}
+        {% if words < 360 %}
+          1 min read
+        {% else %}
+          {{ words | divided_by: 180 }} min read
+        {% endif %}
+      </span>
+      {% if page.categories %}
+        <span class="meta-sep">·</span>
+        <span class="post-category-badge">{{ page.categories | first }}</span>
+      {% endif %}
+    </div>
+
+    <h1 class="post-title">{{ page.title }}</h1>
+
+    {% if page.tags %}
+      <div class="post-tags-container">
+        {% for tag in page.tags %}
+          <span class="tag-chip">#{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="post-author-bar">
+      <div class="author-avatar">RA</div>
+      <div class="author-details">
+        <span class="author-name">{{ site.title }}</span>
+        <span class="author-title">Smart Contract Security Researcher</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Body -->
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <!-- Post Footer & Share -->
+  <footer class="post-end-matter">
+    <div class="post-share-card">
+      <div class="share-info">
+        <h3>Enjoyed this breakdown?</h3>
+        <p>I research DeFi vulnerabilities, EVM attack vectors, and build developer security tooling. Check out my audit portfolio or reach out for private security engagements.</p>
+      </div>
+      <div class="share-actions">
+        <a href="{{ site.portfolio_repo }}" class="btn btn-primary btn-sm" target="_blank" rel="noopener">
+          View Security Portfolio ↗
+        </a>
+        <a href="https://x.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" class="btn btn-secondary btn-sm" target="_blank" rel="noopener">
+          Share on X ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Next / Prev navigation -->
+    <div class="post-pagination">
+      {% if page.previous.url %}
+        <a class="pagination-link prev" href="{{ page.previous.url | relative_url }}">
+          <span class="pag-sub">← Previous Article</span>
+          <span class="pag-title">{{ page.previous.title }}</span>
+        </a>
+      {% else %}
+        <div class="pagination-empty"></div>
+      {% endif %}
+
+      {% if page.next.url %}
+        <a class="pagination-link next" href="{{ page.next.url | relative_url }}">
+          <span class="pag-sub">Next Article →</span>
+          <span class="pag-title">{{ page.next.title }}</span>
+        </a>
+      {% endif %}
+    </div>
+  </footer>
+</article>

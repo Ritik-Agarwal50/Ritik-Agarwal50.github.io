@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  {% include head.html %}
+  <body class="site-body">
+    {% include header.html %}
+
+    <main class="site-main" id="main-content">
+      {{ content }}
+    </main>
+
+    {% include footer.html %}
+
+    <!-- Client-side Scripts (Theme toggle, mobile drawer, copy code) -->
+    <script>
+      (function() {
+        // Theme Toggle
+        var themeToggleBtn = document.getElementById('theme-toggle');
+        if (themeToggleBtn) {
+          themeToggleBtn.addEventListener('click', function() {
+            var currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            var nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', nextTheme);
+            try {
+              localStorage.setItem('theme', nextTheme);
+            } catch (e) {}
+          });
+        }
+
+        // Mobile Menu Toggle
+        var menuBtn = document.getElementById('mobile-menu-toggle');
+        var mobileNav = document.getElementById('mobile-nav');
+        if (menuBtn && mobileNav) {
+          menuBtn.addEventListener('click', function() {
+            var isOpen = mobileNav.classList.toggle('is-open');
+            menuBtn.classList.toggle('is-active', isOpen);
+            document.body.classList.toggle('nav-open', isOpen);
+          });
+
+          // Close menu when clicking any link inside
+          var mobileLinks = mobileNav.querySelectorAll('a');
+          mobileLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+              mobileNav.classList.remove('is-open');
+              menuBtn.classList.remove('is-active');
+              document.body.classList.remove('nav-open');
+            });
+          });
+        }
+
+        // Add Copy Button to Code Blocks
+        function setupCodeCopy() {
+          var codeBlocks = document.querySelectorAll('pre');
+          codeBlocks.forEach(function(pre) {
+            if (pre.parentNode.classList.contains('code-block-wrapper')) return;
+
+            var wrapper = document.createElement('div');
+            wrapper.className = 'code-block-wrapper';
+            pre.parentNode.insertBefore(wrapper, pre);
+            wrapper.appendChild(pre);
+
+            var button = document.createElement('button');
+            button.className = 'code-copy-btn';
+            button.setAttribute('aria-label', 'Copy code to clipboard');
+            button.innerHTML = '<span class="copy-text">Copy</span>';
+
+            button.addEventListener('click', function() {
+              var code = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText;
+              navigator.clipboard.writeText(code).then(function() {
+                button.classList.add('copied');
+                button.innerHTML = '<span class="copy-text">Copied!</span>';
+                setTimeout(function() {
+                  button.classList.remove('copied');
+                  button.innerHTML = '<span class="copy-text">Copy</span>';
+                }, 2000);
+              }).catch(function() {
+                button.innerText = 'Failed';
+              });
+            });
+
+            wrapper.appendChild(button);
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', setupCodeCopy);
+        } else {
+          setupCodeCopy();
+        }
+
+        // Scroll listener for header elevation
+        var header = document.getElementById('site-header');
+        if (header) {
+          window.addEventListener('scroll', function() {
+            if (window.scrollY > 20) {
+              header.classList.add('is-scrolled');
+            } else {
+              header.classList.remove('is-scrolled');
+            }
+          }, { passive: true });
+        }
+      })();
+    </script>
+  </body>
+</html>

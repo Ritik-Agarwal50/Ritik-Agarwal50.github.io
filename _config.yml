@@ -1,17 +1,43 @@
 title: "Ritik Agarwal"
-description: "Smart contract security researcher and security engineer."
+description: "Smart contract security researcher and security engineer specializing in EVM internals, DeFi architecture, and software supply-chain security."
+url: "https://ritik-agarwal50.github.io"
 baseurl: ""
-theme: minima
-show_excerpts: false
 
+# Social & Contact
 email: ritikagarwal570@gmail.com
 github_username: Ritik-Agarwal50
 twitter_username: RitikkAgarwalll
 linkedin_username: ritik-agarwal-bb0934182
+portfolio_repo: "https://github.com/Ritik-Agarwal50/security-portfolio"
 cv_url: "/asset/Ritik_Resume.pdf"
 
+# Researcher Highlights
+headline: "Smart Contract Security Researcher & Engineer"
+status_text: "Available for Audits & Security Reviews"
+metric_rank: "3rd / 723"
+metric_rank_label: "Cantina Kuru Audit"
+metric_findings: "18"
+metric_findings_label: "Validated Findings"
+metric_contests: "8+"
+metric_contests_label: "Public Competitions"
+metric_focus: "EVM & Go"
+metric_focus_label: "DeFi & Tooling"
+
+# Navigation
 header_pages:
-  - portfolio.md
-  - timeline.md
-  - about.md
-  - blog.md
+  - portfolio.html
+  - timeline.html
+  - blog.html
+  - about.html
+
+# Build configuration
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

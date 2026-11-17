@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline & Research Log — Ritik Agarwal</title>
+  <meta name="description" content="A chronological log of research, security audits, hackathons, and intellectual milestones by Ritik Agarwal.">
+  <link rel="stylesheet" href="assets/main.css">
+  <style>
+
+:root {
+  --measure: 720px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #1c1c1c;
+  font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
+  font-size: 18px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 48px 22px 80px 22px;
+}
+.site-header {
+  margin-bottom: 40px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.site-title {
+  font-family: Charter, Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 6px 0;
+  color: #1c1c1c;
+}
+.site-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.site-subtitle {
+  font-family: Charter, Georgia, serif;
+  font-style: italic;
+  font-size: 0.98rem;
+  color: #4a4a4a;
+  margin: 0 0 16px 0;
+}
+.site-nav {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.9rem;
+  margin-top: 14px;
+}
+.site-nav a {
+  color: #1c1c1c;
+  text-decoration: none;
+  margin-right: 8px;
+  padding-bottom: 2px;
+}
+.site-nav a:hover, .site-nav a.active {
+  color: #0b57d0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.site-nav .nav-sep {
+  color: #6e6e6e;
+  margin-right: 8px;
+  user-select: none;
+}
+h1, h2, h3 {
+  font-family: Charter, Georgia, serif;
+  color: #1c1c1c;
+  line-height: 1.3;
+  font-weight: 700;
+}
+h1 { font-size: 1.5rem; margin: 36px 0 16px 0; }
+h2 { font-size: 1.25rem; margin: 36px 0 12px 0; padding-top: 8px; }
+h3 { font-size: 1.08rem; margin: 24px 0 8px 0; }
+p { margin: 0 0 18px 0; }
+a {
+  color: #0b57d0;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: #083c91; }
+ul, ol { margin: 0 0 20px 0; padding-left: 28px; }
+li { margin-bottom: 8px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+th, td {
+  text-align: left;
+  padding: 10px 12px;
+  vertical-align: top;
+}
+th {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #4a4a4a;
+  border-top: 1px solid #e2e2e2;
+  border-bottom: 2px solid #e2e2e2;
+}
+td { border-bottom: 1px solid #eeeeee; }
+tbody tr:last-child td { border-bottom: 1px solid #e2e2e2; }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  background-color: #f5f6f8;
+  border: 1px solid #e1e4e8;
+  border-radius: 3px;
+  padding: 0.15em 0.35em;
+  color: #24292e;
+}
+pre {
+  background-color: #f5f6f8;
+  border: 1px solid #e1e4e8;
+  border-radius: 4px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+.note-box {
+  background-color: #fafafa;
+  border-left: 3px solid #888888;
+  padding: 14px 18px;
+  margin: 22px 0;
+  font-size: 0.94rem;
+}
+.note-box p:last-child { margin-bottom: 0; }
+.essay-list { list-style: none; padding: 0; margin: 20px 0; }
+.essay-item { margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px solid #eeeeee; }
+.essay-item:last-child { border-bottom: none; }
+.essay-date {
+  font-family: ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: #6e6e6e;
+  display: inline-block;
+  min-width: 110px;
+}
+.essay-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.essay-abstract {
+  font-size: 0.92rem;
+  color: #4a4a4a;
+  margin: 6px 0 0 0;
+  line-height: 1.55;
+}
+.timeline-entry {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+.timeline-entry:last-child { border-bottom: none; }
+.timeline-year {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #6e6e6e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.timeline-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+.site-footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e2e2;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.85rem;
+  color: #6e6e6e;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-footer a { color: #4a4a4a; text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+@media (max-width: 640px) {
+  html { font-size: 17px; }
+  .container { padding: 30px 16px 60px 16px; }
+  .essay-date { display: block; margin-bottom: 2px; }
+  table { display: block; overflow-x: auto; }
+}
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="site-header">
+    <div class="site-title"><a href="index.html">Ritik Agarwal</a></div>
+    <div class="site-subtitle">Smart contract security researcher &amp; security engineer</div>
+    <nav class="site-nav">
+      <a href="index.html">Home</a> <span class="nav-sep">·</span> <a href="portfolio.html">Audits & Findings</a> <span class="nav-sep">·</span> <a href="timeline.html" class="active">Timeline</a> <span class="nav-sep">·</span> <a href="blog.html">Writing & Notes</a> <span class="nav-sep">·</span> <a href="about.html">About</a> <span class="nav-sep">·</span> <a href="cv.html">CV</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Timeline &amp; Research Log</h1>
+
+    <p>
+      A chronological log of my path: learning by building software, competitive hackathons, the shift into smart contract vulnerability research, and current inquiries into zero-knowledge cryptography.
+    </p>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">2026 — Present</div>
+      <h2 class="timeline-heading">Zero-Knowledge Cryptography &amp; Systems Research</h2>
+      <p>
+        Expanding research focus from application-layer smart contract auditing into the mathematical machinery of zero-knowledge proofs. Authoring <em>Intro to ZK Math</em>, an open working guide explaining polynomial commitment schemes (KZG), the Schwartz-Zippel lemma, arithmetization, and Rank-1 Constraint Systems (R1CS).
+      </p>
+      <p>
+        Concurrently developing an independent research project exploring decentralized, serverless communication protocols that eliminate centralized metadata collection.
+      </p>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">2025 — 2026</div>
+      <h2 class="timeline-heading">Software Supply-Chain Security with Shim (Go)</h2>
+      <p>
+        Co-founded and engineered <strong>Shim</strong> — a Go-based security proxy for package managers (<code>npm</code>, <code>pnpm</code>, <code>yarn</code>).
+      </p>
+      <p>
+        Shim intercepts package install lifecycle hooks, runs local rule evaluation against static threat models, and cross-references vulnerability feeds to prevent supply-chain compromises before arbitrary post-install scripts execute. Features an IPC background daemon, minimal latency overhead, and an SQLite cache.
+      </p>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">2025</div>
+      <h2 class="timeline-heading">Full-Time Blockchain Security &amp; Cantina Podium Finish</h2>
+      <p>
+        In January 2025, transitioned into smart contract security research full-time. Focused on deep manual code inspection, Foundry invariant test suites, and dissecting subtle EVM execution edge cases.
+      </p>
+      <p>
+        Achieved a podium finish by placing <strong>3rd out of 723 security researchers</strong> in Cantina's Kuru Protocol security review, identifying 4 high/medium severity vulnerabilities in order-book DEX and multi-asset vault contracts. Over the course of the year, reported <strong>18 validated security findings across 8 public audit competitions</strong>, alongside private NDA reviews for institutional protocols.
+      </p>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">2024</div>
+      <h2 class="timeline-heading">The Catalyst: From Building Protocols to Breaking Them</h2>
+      <p>
+        Completed a Bachelor of Computer Applications (BCA) with <strong>84%</strong> and commenced MCA studies at Jain University.
+      </p>
+      <p>
+        In mid-2024, seeing how single architectural oversights and subtle state-transition flaws could compromise entire decentralized systems, I shifted my focus entirely from standard software engineering to offensive smart contract security, invariant testing, and EVM internals.
+      </p>
+      <div class="note-box">
+        <strong>The Early Crucible:</strong> My initial 15–20 vulnerability submissions to competitive audit platforms were rejected as invalid or deemed out of scope. Rather than discouraging me, this brutal feedback loop taught me the discipline of formal security research: every submission must be accompanied by a deterministic, mathematically verifiable proof-of-concept demonstrating real economic impact.
+      </div>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">2023</div>
+      <h2 class="timeline-heading">Hackathons &amp; Technical Ownership</h2>
+      <p>
+        Led technical architecture across hackathons, writing Solidity smart contracts and integrating complex decentralized backend services:
+      </p>
+      <ul>
+        <li><strong>Cyber Shadez (1st Place):</strong> Won 1st place for <em>Sandesh</em>, a decentralized encrypted messaging protocol.</li>
+        <li><strong>DU Hacks (Polygon Track Winner):</strong> Built <em>Save Tiger</em>, an ERC-721 conservation tracking and fundraising DApp using Next.js and ethers.js.</li>
+        <li><strong>Cyber Shadez (2nd Place):</strong> Architected an ERC-4337 Account Abstraction wallet project with Alchemy bundlers, Next.js, Prisma, and Supabase.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">2022</div>
+      <h2 class="timeline-heading">First Smart Contract Deployments &amp; On-Chain Mechanics</h2>
+      <p>
+        Studied the Ethereum Yellow Paper, Bitcoin whitepaper, and EVM mechanics. Built and deployed full-stack NFT minting contracts to the Ethereum Ropsten testnet, learning the intricacies of gas limits, state variables, and transaction lifecycles.
+      </p>
+    </div>
+
+    <div class="timeline-entry">
+      <div class="timeline-year">2020 — 2021</div>
+      <h2 class="timeline-heading">First Experiments in Code</h2>
+      <p>
+        Started programming with Python, building <em>ANA</em>, a desktop voice-command assistant utilizing speech recognition and text-to-speech libraries.
+      </p>
+      <p>
+        Entered university (GLS University) and explored web development, systems programming, and machine learning theory before discovering distributed consensus and decentralized protocols.
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div>&copy; 2026 Ritik Agarwal · Independent Security Researcher</div>
+    <div>
+      <a href="index.html">Home</a> · 
+      <a href="portfolio.html">Audits</a> · 
+      <a href="timeline.html">Timeline</a> · 
+      <a href="blog.html">Notes</a> · 
+      <a href="about.html">About</a> · 
+      <a href="cv.html">CV</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

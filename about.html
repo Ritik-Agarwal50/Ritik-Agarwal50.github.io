@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Ritik Agarwal</title>
+  <meta name="description" content="About Ritik Agarwal — smart contract security researcher, audit methodology, background, and research philosophy.">
+  <link rel="stylesheet" href="assets/main.css">
+  <style>
+
+:root {
+  --measure: 720px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #1c1c1c;
+  font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
+  font-size: 18px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 48px 22px 80px 22px;
+}
+.site-header {
+  margin-bottom: 40px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.site-title {
+  font-family: Charter, Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 6px 0;
+  color: #1c1c1c;
+}
+.site-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.site-subtitle {
+  font-family: Charter, Georgia, serif;
+  font-style: italic;
+  font-size: 0.98rem;
+  color: #4a4a4a;
+  margin: 0 0 16px 0;
+}
+.site-nav {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.9rem;
+  margin-top: 14px;
+}
+.site-nav a {
+  color: #1c1c1c;
+  text-decoration: none;
+  margin-right: 8px;
+  padding-bottom: 2px;
+}
+.site-nav a:hover, .site-nav a.active {
+  color: #0b57d0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.site-nav .nav-sep {
+  color: #6e6e6e;
+  margin-right: 8px;
+  user-select: none;
+}
+h1, h2, h3 {
+  font-family: Charter, Georgia, serif;
+  color: #1c1c1c;
+  line-height: 1.3;
+  font-weight: 700;
+}
+h1 { font-size: 1.5rem; margin: 36px 0 16px 0; }
+h2 { font-size: 1.25rem; margin: 36px 0 12px 0; padding-top: 8px; }
+h3 { font-size: 1.08rem; margin: 24px 0 8px 0; }
+p { margin: 0 0 18px 0; }
+a {
+  color: #0b57d0;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: #083c91; }
+ul, ol { margin: 0 0 20px 0; padding-left: 28px; }
+li { margin-bottom: 8px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+th, td {
+  text-align: left;
+  padding: 10px 12px;
+  vertical-align: top;
+}
+th {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #4a4a4a;
+  border-top: 1px solid #e2e2e2;
+  border-bottom: 2px solid #e2e2e2;
+}
+td { border-bottom: 1px solid #eeeeee; }
+tbody tr:last-child td { border-bottom: 1px solid #e2e2e2; }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  background-color: #f5f6f8;
+  border: 1px solid #e1e4e8;
+  border-radius: 3px;
+  padding: 0.15em 0.35em;
+  color: #24292e;
+}
+pre {
+  background-color: #f5f6f8;
+  border: 1px solid #e1e4e8;
+  border-radius: 4px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+.note-box {
+  background-color: #fafafa;
+  border-left: 3px solid #888888;
+  padding: 14px 18px;
+  margin: 22px 0;
+  font-size: 0.94rem;
+}
+.note-box p:last-child { margin-bottom: 0; }
+.essay-list { list-style: none; padding: 0; margin: 20px 0; }
+.essay-item { margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px solid #eeeeee; }
+.essay-item:last-child { border-bottom: none; }
+.essay-date {
+  font-family: ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: #6e6e6e;
+  display: inline-block;
+  min-width: 110px;
+}
+.essay-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.essay-abstract {
+  font-size: 0.92rem;
+  color: #4a4a4a;
+  margin: 6px 0 0 0;
+  line-height: 1.55;
+}
+.timeline-entry {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+.timeline-entry:last-child { border-bottom: none; }
+.timeline-year {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #6e6e6e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.timeline-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+.site-footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e2e2;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.85rem;
+  color: #6e6e6e;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-footer a { color: #4a4a4a; text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+@media (max-width: 640px) {
+  html { font-size: 17px; }
+  .container { padding: 30px 16px 60px 16px; }
+  .essay-date { display: block; margin-bottom: 2px; }
+  table { display: block; overflow-x: auto; }
+}
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="site-header">
+    <div class="site-title"><a href="index.html">Ritik Agarwal</a></div>
+    <div class="site-subtitle">Smart contract security researcher &amp; security engineer</div>
+    <nav class="site-nav">
+      <a href="index.html">Home</a> <span class="nav-sep">·</span> <a href="portfolio.html">Audits & Findings</a> <span class="nav-sep">·</span> <a href="timeline.html">Timeline</a> <span class="nav-sep">·</span> <a href="blog.html">Writing & Notes</a> <span class="nav-sep">·</span> <a href="about.html" class="active">About</a> <span class="nav-sep">·</span> <a href="cv.html">CV</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>About Ritik Agarwal</h1>
+
+    <p>
+      I am an independent smart contract security researcher and security engineer based in Ahmedabad, India. I specialize in identifying high-severity business-logic vulnerabilities, invariant violations, and EVM execution edge cases in decentralized protocols.
+    </p>
+
+    <h2>Background &amp; Philosophy</h2>
+    <p>
+      My engineering background started in general software development and hackathons before shifting to EVM internals. Rather than viewing smart contracts as static text to run through automated scanners, I view them as state machines where discrete state transitions, precision rounding, and reentrancy execution sequences can lead to catastrophic insolvency.
+    </p>
+    <p>
+      I realized early on that writing functional code is only half the engineering challenge; rigorously proving that code cannot be forced into invalid economic states is where the real depth lies. This realization prompted my transition from application development to deep offensive security research and formal invariant testing.
+    </p>
+
+    <h2>Audit Methodology</h2>
+    <ol>
+      <li>
+        <strong>Invariant Mapping &amp; Intent Modeling:</strong> Before looking for bugs, I study the protocol's mathematical architecture. What are the core invariant properties? Can total borrowed assets ever exceed supplied liquidity? Can exchange rates ever decrease? What state assumptions does the contract rely on?
+      </li>
+      <li>
+        <strong>Adversarial Threat Modeling:</strong> I systematically interrogate state transitions: flash loans, oracle latency, unexpected token behaviors (fee-on-transfer, rebasing, ERC-777 callbacks), integer truncation across casting boundaries, and transaction ordering dependencies.
+      </li>
+      <li>
+        <strong>Deterministic Proof-of-Concept (PoC):</strong> Speculative vulnerability reports provide little value. Every high or medium vulnerability I document is paired with a reproducible Foundry test suite that mathematically validates the exploit path, calculates exact capital loss, and validates the mitigation.
+      </li>
+    </ol>
+
+    <h2>Technical Stack</h2>
+    <ul>
+      <li><strong>Languages:</strong> Solidity (v0.8.x), Go (Golang), Python, JavaScript / TypeScript.</li>
+      <li><strong>Security &amp; Testing Frameworks:</strong> Foundry (Forge, Cast, Anvil), Slither, Echidna, Hardhat.</li>
+      <li><strong>Core Protocols &amp; Domains:</strong> AMMs (Uniswap v2/v3/v4), ERC-4626 Tokenized Vaults, Money Markets / Lending (Compound/Aave models), Account Abstraction (ERC-4337), Software Supply-Chain Security.</li>
+      <li><strong>Cryptography:</strong> Merkle Trees, ZK Circuit Arithmetization (R1CS), Polynomial Commitments.</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>
+      Whether you are preparing for a mainnet launch, need an independent security audit, or want to discuss zero-knowledge research, feel free to reach out:
+    </p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:ritikagarwal570@gmail.com">ritikagarwal570@gmail.com</a></li>
+      <li><strong>GitHub:</strong> <a href="https://github.com/Ritik-Agarwal50" target="_blank" rel="noopener">github.com/Ritik-Agarwal50</a></li>
+      <li><strong>Twitter / X:</strong> <a href="https://x.com/RitikkAgarwalll" target="_blank" rel="noopener">@RitikkAgarwalll</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ritik-agarwal-bb0934182" target="_blank" rel="noopener">linkedin.com/in/ritik-agarwal-bb0934182</a></li>
+      <li><strong>Resume:</strong> <a href="asset/Ritik_Resume.pdf" target="_blank" rel="noopener">Download PDF</a></li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <div>&copy; 2026 Ritik Agarwal · Independent Security Researcher</div>
+    <div>
+      <a href="index.html">Home</a> · 
+      <a href="portfolio.html">Audits</a> · 
+      <a href="timeline.html">Timeline</a> · 
+      <a href="blog.html">Notes</a> · 
+      <a href="about.html">About</a> · 
+      <a href="cv.html">CV</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

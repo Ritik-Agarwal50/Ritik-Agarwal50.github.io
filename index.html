@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ritik Agarwal</title>
+  <meta name="description" content="Personal notebook and security research portfolio of Ritik Agarwal.">
+  <link rel="stylesheet" href="assets/main.css">
+  <style>
+
+:root {
+  --measure: 680px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fdfdfd;
+  color: #111111;
+  font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
+  font-size: 18px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 48px 22px 76px 22px;
+}
+.site-header {
+  margin-bottom: 34px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.site-title {
+  font-family: Charter, Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 4px 0;
+  color: #111111;
+}
+.site-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.site-subtitle {
+  font-family: Charter, Georgia, serif;
+  font-style: italic;
+  font-size: 0.96rem;
+  color: #444444;
+  margin: 0 0 14px 0;
+}
+.site-nav {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.88rem;
+  margin-top: 10px;
+}
+.site-nav a {
+  color: #111111;
+  text-decoration: none;
+  margin-right: 8px;
+  padding-bottom: 2px;
+}
+.site-nav a:hover, .site-nav a.active {
+  color: #0b57d0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.site-nav .nav-sep {
+  color: #888888;
+  margin-right: 8px;
+  user-select: none;
+}
+h2 {
+  font-family: Charter, Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111111;
+  margin: 36px 0 12px 0;
+  padding-top: 6px;
+}
+p { margin: 0 0 16px 0; }
+a {
+  color: #0b57d0;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: #083c91; }
+ul, ol { margin: 0 0 18px 0; padding-left: 24px; }
+li { margin-bottom: 10px; }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.86em;
+  background-color: #f5f6f8;
+  border: 1px solid #e1e4e8;
+  border-radius: 3px;
+  padding: 0.12em 0.32em;
+}
+
+.intro-links {
+  margin: 14px 0 28px 0;
+  font-size: 0.92rem;
+}
+
+.essay-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+.essay-item {
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #eeeeee;
+}
+.essay-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.essay-date {
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  color: #666666;
+  display: inline-block;
+  min-width: 105px;
+}
+.essay-title {
+  font-size: 1.04rem;
+  font-weight: 700;
+}
+.essay-abstract {
+  font-size: 0.92rem;
+  color: #444444;
+  margin: 5px 0 0 0;
+  line-height: 1.55;
+}
+.site-footer {
+  margin-top: 50px;
+  padding-top: 22px;
+  border-top: 1px solid #e6e6e6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.84rem;
+  color: #666666;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-footer a { color: #444444; text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+@media (max-width: 640px) {
+  html { font-size: 17px; }
+  .container { padding: 30px 16px 54px 16px; }
+  .essay-date { display: block; margin-bottom: 2px; }
+}
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="site-header">
+    <div class="site-title"><a href="index.html">Ritik Agarwal</a></div>
+    <div class="site-subtitle">Smart contract security researcher &amp; security engineer</div>
+    <nav class="site-nav">
+      <a href="index.html" class="active">Home</a> <span class="nav-sep">·</span> 
+      <a href="portfolio.html">Audits &amp; Findings</a> <span class="nav-sep">·</span> 
+      <a href="timeline.html">Timeline</a> <span class="nav-sep">·</span> 
+      <a href="blog.html">Writing &amp; Notes</a> <span class="nav-sep">·</span> 
+      <a href="bookshelf.html">Bookshelf</a> <span class="nav-sep">·</span> 
+      <a href="cv.html">CV</a>
+    </nav>
+  </header>
+
+  <main>
+    <p>
+      I am an independent smart contract security researcher and systems engineer based in Ahmedabad, India. I focus on breaking and securing decentralized protocols — analyzing complex DeFi architectures, uncovering subtle invariant violations, and modeling adversarial edge cases across the EVM.
+    </p>
+    <p>
+      Alongside competitive audits and private security engagements, I build developer security tooling in Go — including <a href="https://github.com/Ritik-Agarwal50/Shim" target="_blank" rel="noopener">Shim</a>, an open-source security proxy protecting package managers — and actively research zero-knowledge proofs and machine learning.
+    </p>
+    <p class="intro-links">
+      <a href="mailto:ritikagarwal570@gmail.com">ritikagarwal570@gmail.com</a> · 
+      <a href="https://github.com/Ritik-Agarwal50" target="_blank" rel="noopener">GitHub</a> · 
+      <a href="https://x.com/RitikkAgarwalll" target="_blank" rel="noopener">Twitter / X</a> · 
+      <a href="https://www.linkedin.com/in/ritik-agarwal-bb0934182" target="_blank" rel="noopener">LinkedIn</a> · 
+      <a href="asset/Ritik_Resume.pdf" target="_blank" rel="noopener">Resume PDF</a>
+    </p>
+
+    <h2>Selected Work</h2>
+    <ul>
+      <li>
+        <strong><a href="https://github.com/Ritik-Agarwal50/security-portfolio/tree/main/Kuru" target="_blank" rel="noopener">Cantina — Kuru Protocol</a>:</strong> Placed 3rd of 723 security researchers worldwide. Identified 4 validated vulnerabilities in an on-chain CLOB exchange, margin trading engine, and multi-asset vaults (<a href="https://github.com/Ritik-Agarwal50/security-portfolio/tree/main/Kuru" target="_blank" rel="noopener">Report</a>).
+      </li>
+      <li>
+        <strong><a href="https://github.com/Ritik-Agarwal50/security-portfolio/tree/main/Ammplify" target="_blank" rel="noopener">Sherlock — Ammplify</a>:</strong> 19th place finish. Validated an edge case in Uniswap v4 liquidity amplification hook math (<a href="https://github.com/Ritik-Agarwal50/security-portfolio/tree/main/Ammplify" target="_blank" rel="noopener">Report</a>).
+      </li>
+      <li>
+        <strong><a href="https://github.com/Ritik-Agarwal50/Shim" target="_blank" rel="noopener">Shim</a>:</strong> Co-founder and security engineer. A Go-based security proxy for <code>npm</code>, <code>pnpm</code>, and <code>yarn</code> that intercepts lifecycle hooks and blocks software supply-chain attacks before execution.
+      </li>
+      <li>
+        <strong>Uniswap v4 Take-Profit Hooks:</strong> Custom v4 pool hooks automating on-chain limit orders on tick boundary crossings. Built and tested with Foundry and Solidity v0.8.26.
+      </li>
+      <li>
+        <strong>Competitive Audit Portfolio:</strong> 18 validated findings across 8 public competitions (Sherlock, Cantina, CodeHawks, Guardian). <a href="portfolio.html">View complete catalog of findings &rarr;</a>
+      </li>
+    </ul>
+
+    <h2>Recent Writing</h2>
+    <ul class="essay-list">
+      <li class="essay-item">
+        <span class="essay-date">2026-09-15</span>
+        <a href="posts/notional-finance-exploit.html" class="essay-title">The Debt That Became Zero: Inside the Notional Finance Exploit</a>
+        <div class="essay-abstract">
+          On September 4, 2026, Notional Finance was attacked for approximately $1.73 million. A root-cause analysis of how an unsafe integer cast in <code>ExchangeRate._convertToETH()</code> collapsed negative fCash debt balances into positive collateral.
+        </div>
+      </li>
+
+      <li class="essay-item">
+        <span class="essay-date">2026-09-04</span>
+        <a href="posts/timber-merkle-tree.html" class="essay-title">Timber Merkle Tree: Cryptographic Proofs &amp; On-Chain Verification</a>
+        <div class="essay-abstract">
+          A technical examination of incremental Merkle tree algorithms, frontier node tracking, and gas-efficient cryptographic membership proofs on the Ethereum Virtual Machine.
+        </div>
+      </li>
+    </ul>
+    <p style="font-size: 0.92rem; margin-top: -4px;">
+      <a href="blog.html">Browse all writing &amp; notes &rarr;</a>
+    </p>
+
+    <h2>Notebook Index</h2>
+    <p>
+      This site serves as an open working notebook across my security research, audits, essays, and systems work:
+    </p>
+    <ul>
+      <li><a href="portfolio.html"><strong>Security Audits &amp; Validated Findings</strong></a> — Complete catalog of 18+ findings, competition placements, and scopes.</li>
+      <li><a href="timeline.html"><strong>Timeline &amp; Research Log</strong></a> — Chronological record of my path from software development to competitive security and ML study.</li>
+      <li><a href="blog.html"><strong>Writing &amp; Notes</strong></a> — Technical essays and exploit analyses.</li>
+      <li><a href="bookshelf.html"><strong>Bookshelf &amp; Reading Log</strong></a> — Living database of research papers, books, and cryptographic notes.</li>
+      <li><a href="cv.html"><strong>Curriculum Vitae</strong></a> — Formal resume (<a href="asset/Ritik_Resume.pdf" target="_blank" rel="noopener">Download PDF</a>).</li>
+    </ul>
+
+    <h2>Contact</h2>
+    <p>
+      Available for independent smart contract security reviews, invariant testing, and ML research discussions:
+    </p>
+    <p>
+      <a href="mailto:ritikagarwal570@gmail.com">ritikagarwal570@gmail.com</a> · 
+      <a href="https://github.com/Ritik-Agarwal50" target="_blank" rel="noopener">GitHub</a> · 
+      <a href="https://x.com/RitikkAgarwalll" target="_blank" rel="noopener">Twitter / X</a> · 
+      <a href="https://www.linkedin.com/in/ritik-agarwal-bb0934182" target="_blank" rel="noopener">LinkedIn</a> · 
+      <a href="asset/Ritik_Resume.pdf" target="_blank" rel="noopener">Resume PDF</a>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div>&copy; 2026 Ritik Agarwal · Independent Security Researcher</div>
+    <div>
+      <a href="index.html">Home</a> · 
+      <a href="portfolio.html">Audits</a> · 
+      <a href="timeline.html">Timeline</a> · 
+      <a href="blog.html">Writing</a> · 
+      <a href="bookshelf.html">Bookshelf</a> · 
+      <a href="cv.html">CV</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

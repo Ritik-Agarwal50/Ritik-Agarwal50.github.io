@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing & Technical Notes — Ritik Agarwal</title>
+  <meta name="description" content="Technical essays, smart contract exploit post-mortems, and cryptographic notes by Ritik Agarwal.">
+  <link rel="stylesheet" href="assets/main.css">
+  <style>
+
+:root {
+  --measure: 720px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #1c1c1c;
+  font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
+  font-size: 18px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 48px 22px 80px 22px;
+}
+.site-header {
+  margin-bottom: 40px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.site-title {
+  font-family: Charter, Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 6px 0;
+  color: #1c1c1c;
+}
+.site-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.site-subtitle {
+  font-family: Charter, Georgia, serif;
+  font-style: italic;
+  font-size: 0.98rem;
+  color: #4a4a4a;
+  margin: 0 0 16px 0;
+}
+.site-nav {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.9rem;
+  margin-top: 14px;
+}
+.site-nav a {
+  color: #1c1c1c;
+  text-decoration: none;
+  margin-right: 8px;
+  padding-bottom: 2px;
+}
+.site-nav a:hover, .site-nav a.active {
+  color: #0b57d0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.site-nav .nav-sep {
+  color: #6e6e6e;
+  margin-right: 8px;
+  user-select: none;
+}
+h1, h2, h3 {
+  font-family: Charter, Georgia, serif;
+  color: #1c1c1c;
+  line-height: 1.3;
+  font-weight: 700;
+}
+h1 { font-size: 1.5rem; margin: 36px 0 16px 0; }
+h2 { font-size: 1.25rem; margin: 36px 0 12px 0; padding-top: 8px; }
+h3 { font-size: 1.08rem; margin: 24px 0 8px 0; }
+p { margin: 0 0 18px 0; }
+a {
+  color: #0b57d0;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: #083c91; }
+ul, ol { margin: 0 0 20px 0; padding-left: 28px; }
+li { margin-bottom: 8px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+th, td {
+  text-align: left;
+  padding: 10px 12px;
+  vertical-align: top;
+}
+th {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #4a4a4a;
+  border-top: 1px solid #e2e2e2;
+  border-bottom: 2px solid #e2e2e2;
+}
+td { border-bottom: 1px solid #eeeeee; }
+tbody tr:last-child td { border-bottom: 1px solid #e2e2e2; }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  background-color: #f5f6f8;
+  border: 1px solid #e1e4e8;
+  border-radius: 3px;
+  padding: 0.15em 0.35em;
+  color: #24292e;
+}
+pre {
+  background-color: #f5f6f8;
+  border: 1px solid #e1e4e8;
+  border-radius: 4px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+.note-box {
+  background-color: #fafafa;
+  border-left: 3px solid #888888;
+  padding: 14px 18px;
+  margin: 22px 0;
+  font-size: 0.94rem;
+}
+.note-box p:last-child { margin-bottom: 0; }
+.essay-list { list-style: none; padding: 0; margin: 20px 0; }
+.essay-item { margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px solid #eeeeee; }
+.essay-item:last-child { border-bottom: none; }
+.essay-date {
+  font-family: ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: #6e6e6e;
+  display: inline-block;
+  min-width: 110px;
+}
+.essay-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.essay-abstract {
+  font-size: 0.92rem;
+  color: #4a4a4a;
+  margin: 6px 0 0 0;
+  line-height: 1.55;
+}
+.timeline-entry {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+.timeline-entry:last-child { border-bottom: none; }
+.timeline-year {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #6e6e6e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.timeline-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+.site-footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e2e2;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.85rem;
+  color: #6e6e6e;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-footer a { color: #4a4a4a; text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+@media (max-width: 640px) {
+  html { font-size: 17px; }
+  .container { padding: 30px 16px 60px 16px; }
+  .essay-date { display: block; margin-bottom: 2px; }
+  table { display: block; overflow-x: auto; }
+}
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="site-header">
+    <div class="site-title"><a href="index.html">Ritik Agarwal</a></div>
+    <div class="site-subtitle">Smart contract security researcher &amp; security engineer</div>
+    <nav class="site-nav">
+      <a href="index.html">Home</a> <span class="nav-sep">·</span> <a href="portfolio.html">Audits & Findings</a> <span class="nav-sep">·</span> <a href="timeline.html">Timeline</a> <span class="nav-sep">·</span> <a href="blog.html" class="active">Writing & Notes</a> <span class="nav-sep">·</span> <a href="about.html">About</a> <span class="nav-sep">·</span> <a href="cv.html">CV</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Writing &amp; Technical Notes</h1>
+
+    <p>
+      In-depth post-mortems of DeFi protocol exploits, explorations of EVM execution quirks, cryptographic primitives, and computational complexity theory.
+    </p>
+
+    <ul class="essay-list">
+      <li class="essay-item">
+        <span class="essay-date">September 15, 2026</span>
+        <a href="posts/notional-finance-exploit.html" class="essay-title">The Debt That Became Zero: Inside the Notional Finance Exploit</a>
+        <p class="essay-abstract">
+          On September 4, 2026, Notional Finance was attacked for approximately .73 million. All it took was one unsafe cast inside <code>ExchangeRate._convertToETH()</code> to invert negative debt balances into positive collateral and drain protocol reserves.
+        </p>
+      </li>
+
+      <li class="essay-item">
+        <span class="essay-date">September 04, 2026</span>
+        <a href="posts/timber-merkle-tree.html" class="essay-title">Timber Merkle Tree: Cryptographic Proofs &amp; On-Chain Verification</a>
+        <p class="essay-abstract">
+          How incremental Merkle trees maintain state without requiring full tree recomputation on every deposit. Breaking down frontier node caching, zero-hash precomputations, and verifying membership proofs inside Solidity contracts.
+        </p>
+      </li>
+
+      <li class="essay-item">
+        <span class="essay-date">November 02, 2025</span>
+        <a href="posts/circuits-p-vs-np-zk.html" class="essay-title">The Missing Link: How Circuits Connect P vs. NP to Zero Knowledge</a>
+        <p class="essay-abstract">
+          Why NP problems are defined as "easy to verify," how high-level software logic is transformed into mathematical constraints through arithmetization, and why this mathematical equivalence forms the bedrock of zero-knowledge proof systems.
+        </p>
+      </li>
+
+      <li class="essay-item">
+        <span class="essay-date">October 31, 2025</span>
+        <a href="posts/p-vs-np.html" class="essay-title">Is Genius a Bug? Cracking the Code of P vs NP</a>
+        <p class="essay-abstract">
+          An intuitive look into the Millennium Prize problem: is the creative process of discovering a mathematical proof fundamentally harder than verifying one? What would the world look like if P = NP?
+        </p>
+      </li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <div>&copy; 2026 Ritik Agarwal · Independent Security Researcher</div>
+    <div>
+      <a href="index.html">Home</a> · 
+      <a href="portfolio.html">Audits</a> · 
+      <a href="timeline.html">Timeline</a> · 
+      <a href="blog.html">Notes</a> · 
+      <a href="about.html">About</a> · 
+      <a href="cv.html">CV</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

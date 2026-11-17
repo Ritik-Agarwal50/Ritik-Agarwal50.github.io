@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Portfolio & Validated Findings — Ritik Agarwal</title>
+  <meta name="description" content="Competitive audit results, validated vulnerabilities, and private security reviews by Ritik Agarwal.">
+  <link rel="stylesheet" href="assets/main.css">
+  <style>
+
+:root {
+  --measure: 720px;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #1c1c1c;
+  font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, Georgia, serif;
+  font-size: 18px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+}
+.container {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 48px 22px 80px 22px;
+}
+.site-header {
+  margin-bottom: 40px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #e2e2e2;
+}
+.site-title {
+  font-family: Charter, Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 6px 0;
+  color: #1c1c1c;
+}
+.site-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.site-subtitle {
+  font-family: Charter, Georgia, serif;
+  font-style: italic;
+  font-size: 0.98rem;
+  color: #4a4a4a;
+  margin: 0 0 16px 0;
+}
+.site-nav {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.9rem;
+  margin-top: 14px;
+}
+.site-nav a {
+  color: #1c1c1c;
+  text-decoration: none;
+  margin-right: 8px;
+  padding-bottom: 2px;
+}
+.site-nav a:hover, .site-nav a.active {
+  color: #0b57d0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.site-nav .nav-sep {
+  color: #6e6e6e;
+  margin-right: 8px;
+  user-select: none;
+}
+h1, h2, h3 {
+  font-family: Charter, Georgia, serif;
+  color: #1c1c1c;
+  line-height: 1.3;
+  font-weight: 700;
+}
+h1 { font-size: 1.5rem; margin: 36px 0 16px 0; }
+h2 { font-size: 1.25rem; margin: 36px 0 12px 0; padding-top: 8px; }
+h3 { font-size: 1.08rem; margin: 24px 0 8px 0; }
+p { margin: 0 0 18px 0; }
+a {
+  color: #0b57d0;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: #083c91; }
+ul, ol { margin: 0 0 20px 0; padding-left: 28px; }
+li { margin-bottom: 8px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+th, td {
+  text-align: left;
+  padding: 10px 12px;
+  vertical-align: top;
+}
+th {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #4a4a4a;
+  border-top: 1px solid #e2e2e2;
+  border-bottom: 2px solid #e2e2e2;
+}
+td { border-bottom: 1px solid #eeeeee; }
+tbody tr:last-child td { border-bottom: 1px solid #e2e2e2; }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  background-color: #f5f6f8;
+  border: 1px solid #e1e4e8;
+  border-radius: 3px;
+  padding: 0.15em 0.35em;
+  color: #24292e;
+}
+pre {
+  background-color: #f5f6f8;
+  border: 1px solid #e1e4e8;
+  border-radius: 4px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+.note-box {
+  background-color: #fafafa;
+  border-left: 3px solid #888888;
+  padding: 14px 18px;
+  margin: 22px 0;
+  font-size: 0.94rem;
+}
+.note-box p:last-child { margin-bottom: 0; }
+.essay-list { list-style: none; padding: 0; margin: 20px 0; }
+.essay-item { margin-bottom: 20px; padding-bottom: 18px; border-bottom: 1px solid #eeeeee; }
+.essay-item:last-child { border-bottom: none; }
+.essay-date {
+  font-family: ui-monospace, monospace;
+  font-size: 0.82rem;
+  color: #6e6e6e;
+  display: inline-block;
+  min-width: 110px;
+}
+.essay-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.essay-abstract {
+  font-size: 0.92rem;
+  color: #4a4a4a;
+  margin: 6px 0 0 0;
+  line-height: 1.55;
+}
+.timeline-entry {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+.timeline-entry:last-child { border-bottom: none; }
+.timeline-year {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #6e6e6e;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.timeline-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+.site-footer {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e2e2;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 0.85rem;
+  color: #6e6e6e;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-footer a { color: #4a4a4a; text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+@media (max-width: 640px) {
+  html { font-size: 17px; }
+  .container { padding: 30px 16px 60px 16px; }
+  .essay-date { display: block; margin-bottom: 2px; }
+  table { display: block; overflow-x: auto; }
+}
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header class="site-header">
+    <div class="site-title"><a href="index.html">Ritik Agarwal</a></div>
+    <div class="site-subtitle">Smart contract security researcher &amp; security engineer</div>
+    <nav class="site-nav">
+      <a href="index.html">Home</a> <span class="nav-sep">·</span> <a href="portfolio.html" class="active">Audits & Findings</a> <span class="nav-sep">·</span> <a href="timeline.html">Timeline</a> <span class="nav-sep">·</span> <a href="blog.html">Writing & Notes</a> <span class="nav-sep">·</span> <a href="about.html">About</a> <span class="nav-sep">·</span> <a href="cv.html">CV</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Security Audits &amp; Validated Findings</h1>
+
+    <p>
+      I audit smart contracts with an emphasis on protocol invariants, execution semantics, and business logic. Below is a comprehensive record of competitive audit performances, validated findings across major audit platforms, and private engagements.
+    </p>
+
+    <div class="note-box">
+      <strong>Record Summary:</strong> 18 validated findings across 8 public competitive reviews; 3rd out of 723 researchers on Cantina Kuru; private distributed ledger assessments conducted under mutual NDA.
+    </div>
+
+    <h2>Competitive Audit Record</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Platform</th>
+          <th>Protocol &amp; Scope</th>
+          <th>Result / Rank</th>
+          <th>Findings</th>
+          <th>Report &amp; PoC</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="kuru">
+          <td><strong>Cantina</strong></td>
+          <td>
+            <strong>Kuru Protocol</strong><br>
+            <span style="font-size: 0.85rem; color: #555;">On-chain order-book exchange, margin trading engine, and multi-asset vault contracts.</span>
+          </td>
+          <td><strong>3rd / 723</strong> (Podium)</td>
+          <td>4 Validated</td>
+          <td><a href="https://github.com/Ritik-Agarwal50/security-portfolio/tree/main/Kuru" target="_blank" rel="noopener">Writeup ↗</a></td>
+        </tr>
+        <tr id="ammplify">
+          <td><strong>Sherlock</strong></td>
+          <td>
+            <strong>Ammplify</strong><br>
+            <span style="font-size: 0.85rem; color: #555;">Uniswap v4 custom liquidity amplification hook and dynamic rebalancing logic.</span>
+          </td>
+          <td>19th Place</td>
+          <td>1 Validated</td>
+          <td><a href="https://github.com/Ritik-Agarwal50/security-portfolio/tree/main/Ammplify" target="_blank" rel="noopener">Writeup ↗</a></td>
+        </tr>
+        <tr id="mighty">
+          <td><strong>Cantina</strong></td>
+          <td>
+            <strong>Mighty Finance</strong><br>
+            <span style="font-size: 0.85rem; color: #555;">Leveraged yield farming, multi-token collateral debt positions, and cross-margin lending on Sonic.</span>
+          </td>
+          <td>117th / 629</td>
+          <td>5 Validated</td>
+          <td><a href="https://github.com/Ritik-Agarwal50/security-portfolio/tree/main/Mighty_Finance" target="_blank" rel="noopener">Writeup ↗</a></td>
+        </tr>
+        <tr id="alchemix">
+          <td><strong>Cantina</strong></td>
+          <td>
+            <strong>Alchemix V3</strong><br>
+            <span style="font-size: 0.85rem; color: #555;">Future-yield-backed synthetic loans, transmuter vaults, and yield routing accounting.</span>
+          </td>
+          <td>86th / 902</td>
+          <td>2 Validated</td>
+          <td><a href="https://github.com/Ritik-Agarwal50/security-portfolio/tree/main/Alchemix" target="_blank" rel="noopener">Writeup ↗</a></td>
+        </tr>
+        <tr id="jigsaw">
+          <td><strong>Cantina</strong></td>
+          <td>
+            <strong>Jigsaw Protocol</strong><br>
+            <span style="font-size: 0.85rem; color: #555;">Lending market with dynamic collateralization ratios and automated liquidation cascades.</span>
+          </td>
+          <td>92nd / 759</td>
+          <td>2 Validated</td>
+          <td><a href="https://github.com/Ritik-Agarwal50/security-portfolio/tree/main/Jigsaw-contracts" target="_blank" rel="noopener">Writeup ↗</a></td>
+        </tr>
+        <tr id="limitbreak">
+          <td><strong>Guardian</strong></td>
+          <td>
+            <strong>Limit Break AMM</strong><br>
+            <span style="font-size: 0.85rem; color: #555;">Specialized automated market maker pricing curve and dynamic slippage invariant bounds.</span>
+          </td>
+          <td>Validated</td>
+          <td>2 Validated</td>
+          <td><a href="https://github.com/Ritik-Agarwal50/security-portfolio/tree/main/Limit_Break_AMM" target="_blank" rel="noopener">Writeup ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>CodeHawks</strong></td>
+          <td>
+            <strong>Gamma Protocol</strong><br>
+            <span style="font-size: 0.85rem; color: #555;">Automated liquidity management, Uniswap v3 fee compounding, and vault rebalancing algorithms.</span>
+          </td>
+          <td>64th / 110</td>
+          <td>1 Validated</td>
+          <td><a href="https://github.com/Ritik-Agarwal50/security-portfolio/tree/main/Gamma_Liquidity_Management" target="_blank" rel="noopener">Writeup ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>CodeHawks</strong></td>
+          <td>
+            <strong>QuantAMM</strong><br>
+            <span style="font-size: 0.85rem; color: #555;">Algorithmic liquidity provision and dynamic temporal invariant curves.</span>
+          </td>
+          <td>90th / 110</td>
+          <td>1 Validated</td>
+          <td><a href="https://github.com/Ritik-Agarwal50/security-portfolio/tree/main/QuantAMM" target="_blank" rel="noopener">Writeup ↗</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Private Security Engagements (NDA)</h2>
+    <ul>
+      <li><strong>Go-Based Distributed Ledger Review:</strong> Threat modeling, peer-to-peer consensus message validation, cryptographic state transitions, and griefing attack surfaces in a custom blockchain node architecture.</li>
+      <li><strong>Confidential EVM Vault Architecture:</strong> Comprehensive security review covering multi-tenant yield routing, access control invariants, transient storage interactions (EIP-1153), and precision rounding in ERC-4626 vault implementations.</li>
+    </ul>
+
+    <h2>Areas of Research &amp; Vulnerability Patterns</h2>
+    <ul>
+      <li><strong>DeFi Mechanism Invariants &amp; Financial Math:</strong> Lending rate models, collateral calculation discrepancies, rounding-direction bias, oracle latency and stale pricing vectors, flash-loan balance distortions, and liquidation cascades.</li>
+      <li><strong>EVM Internals &amp; Type Safety:</strong> Integer casting truncation (e.g. <code>uint128</code> / <code>int256</code> casting without boundary validation), memory vs calldata packing, assembly optimizations violating memory guardrails, and upgradeable storage slot collision.</li>
+      <li><strong>Property-Based Invariant Fuzzing:</strong> Developing deterministic Foundry test cases, Echidna fuzzing targets, and formal properties that demonstrate concrete exploit paths rather than speculative findings.</li>
+      <li><strong>Software Supply-Chain Security:</strong> Analyzing dependency graphs, lifecycle script hooks, and binary execution patterns in package managers (implemented in the Go tool <em>Shim</em>).</li>
+    </ul>
+  </main>
+
+  <footer class="site-footer">
+    <div>&copy; 2026 Ritik Agarwal · Independent Security Researcher</div>
+    <div>
+      <a href="index.html">Home</a> · 
+      <a href="portfolio.html">Audits</a> · 
+      <a href="timeline.html">Timeline</a> · 
+      <a href="blog.html">Notes</a> · 
+      <a href="about.html">About</a> · 
+      <a href="cv.html">CV</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
